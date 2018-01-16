@@ -6,7 +6,14 @@ public class RegressionTest {
 	
 	File rundir, datasetFile, trailFile;
 	boolean isTrailCopied, isConfigUpdated, isDataCopied;
+	String dataSetFileName;
 	
+	public String getDataSetFileName() {
+		return dataSetFileName;
+	}
+	public void setDataSetFileName(String dataSetFileName) {
+		this.dataSetFileName = dataSetFileName;
+	}
 	public File getTrailFile() {
 		return trailFile;
 	}
@@ -50,6 +57,14 @@ public class RegressionTest {
 		this.isTrailCopied = false;
 		this.isConfigUpdated = false;
 		this.isDataCopied = false;
+		this.dataSetFileName = null;
+	}
+	
+	@Override
+	public String toString() {
+		return "RegressionTest [rundir=" + rundir + ", datasetFile=" + datasetFile + ", trailFile=" + trailFile
+				+ ", isTrailCopied=" + isTrailCopied + ", isConfigUpdated=" + isConfigUpdated + ", isDataCopied="
+				+ isDataCopied + ", dataSetFileName=" + dataSetFileName + "]";
 	}
 	
 	

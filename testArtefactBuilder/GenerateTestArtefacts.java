@@ -13,29 +13,32 @@ public class GenerateTestArtefacts {
 		StringBuilder dirName = new StringBuilder(new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()));
 		
 		for (int i = 0; i < allRegressionTests.size(); i++) {
-			StringBuilder tempDirName = dirName;
+			StringBuilder tempDirName = new StringBuilder(dirName.toString());
 			File runDir = new File(myEnv.getRunDataRepoLocation(), tempDirName.append("_").append(i).toString());
 			runDir.mkdir();
 			allRegressionTests.get(i).setRundir(runDir);
 		}
 	}
 	
-	public void copyObjectFiles (File source, File dest) {
-		File[] listOfFiles = source.listFiles();
-		for (File file : listOfFiles) {
-			if (file.isFile()) {
-		    	String fileLoc = source.toString()+"\\"+file.getName();
-		    	File srcFile = new File(fileLoc);
-		    	//System.out.println(srcFile.getName());
-		    	try {
-					FileUtils.copyFileToDirectory(srcFile,dest);
-				} catch (IOException e) {
-					System.out.println("Failed to copy object file.");
-					e.printStackTrace();
-				}	
-		    }
-		}
+	public void copyObjectFiles (ArrayList<RegressionTest> allRegressionTests) {
 		
+		for (int i = 0; i < allRegressionTests.size(); i++) {
+			File source = allRegressionTests.get(i).getDatasetFile().getParentFile();
+			File dest = allRegressionTests.get(i).getRundir();
+			
+			File[] listOfFiles = source.listFiles();
+			for (File file : listOfFiles) {
+				if (file.isFile()) {
+			    	try {
+						FileUtils.copyFileToDirectory(file,dest);
+						allRegressionTests.get(i).setDataCopied(true);
+					} catch (IOException e) {
+						System.out.println("Failed to copy object file: " + file.getName());
+						e.printStackTrace();
+					}	
+			    }
+			}
+		}
 	}
 
 }

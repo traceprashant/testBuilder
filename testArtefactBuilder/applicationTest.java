@@ -1,7 +1,6 @@
 package testArtefactBuilder;
 
 import java.util.ArrayList;
-import java.io.File;
 
 public class applicationTest {
 
@@ -21,19 +20,25 @@ public class applicationTest {
 		//Create Run Directories and assign them to each RegressionTest object
 		generateTestArtefacts.createAssignRunDir(currentEnvironment, allRegressionTests, currentInputData);
 		
+		//Assign input objects to RegressionTestObject
+		for (int i = 0; i < allRegressionTests.size(); i++) {
+			allRegressionTests.get(i).setDatasetFile(currentInputData.getListOfObjects().get(i));
+			allRegressionTests.get(i).setDataSetFileName(currentInputData.getListOfObjects().get(i).getName());
+		}
+		
 		//Copy Dataset object files to each runDir
+		generateTestArtefacts.copyObjectFiles(allRegressionTests);
 		
 		//Generate Trail File and Copy to each run dir
 		
 		//provide output object array
 		
-		
-		CreateDirStructure thisDirStructure = new CreateDirStructure(currentInputData.getListOfObjects());
-		ArrayList<File> createdDirList = thisDirStructure.getListOfRunDirs();
-		
-		for (int i = 0; i < createdDirList.size(); i++) {
-			System.out.println(createdDirList.get(i));
+		// Generate toString for all RegressionTest Object for testing
+		for (RegressionTest regTest : allRegressionTests) {
+			System.out.println(regTest.toString());
+			System.out.println("");
 		}
+		
 	}
 
 }
