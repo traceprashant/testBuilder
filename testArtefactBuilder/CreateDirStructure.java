@@ -18,13 +18,13 @@ public class CreateDirStructure {
 	}
 
 	public CreateDirStructure(ArrayList<File> listOfObjects) {
-		//int noOfDirs = listOfObjects.size();
+		
 		Environment myEnvironment = new Environment(); 
-		myEnvironment.setRunDataRepoLocation();
 		//StringBuilder uniqueDirString = new StringBuilder(LocalDateTime.now().toString());
+		StringBuilder dirName = new StringBuilder(new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()));
 		for (int i = 0; i < listOfObjects.size(); i++) {
-			StringBuilder dirName = new StringBuilder(new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()));
-			File runDir = new File(myEnvironment.getRunDataRepoLocation(), dirName.append("_").append(i).toString());
+			StringBuilder tempDirName = dirName;
+			File runDir = new File(myEnvironment.getRunDataRepoLocation(), tempDirName.append("_").append(i).toString());
 			runDir.mkdir();
 			listOfRunDirs.add(runDir);
 		}

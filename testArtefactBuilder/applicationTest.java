@@ -6,27 +6,29 @@ import java.io.File;
 public class applicationTest {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
-		File objFile1 = new File("D:/Training/eclipse_workspaces/test_artefact_builder/test_run_dir/ObjFileDir/dir1/obj1.txt");
-		File objFile2 = new File("D:/Training/eclipse_workspaces/test_artefact_builder/test_run_dir/ObjFileDir/dir2/obj2.txt");
-		File objFile3 = new File("D:/Training/eclipse_workspaces/test_artefact_builder/test_run_dir/ObjFileDir/dir3/obj3.txt");
-		File objFile4 = new File("D:/Training/eclipse_workspaces/test_artefact_builder/test_run_dir/ObjFileDir/dir4/obj4.txt");
-		File objFile5 = new File("D:/Training/eclipse_workspaces/test_artefact_builder/test_run_dir/ObjFileDir/dir5/obj5.txt");
-		File objFile6 = new File("D:/Training/eclipse_workspaces/test_artefact_builder/test_run_dir/ObjFileDir/dir6/obj6.txt");
-		//File objFile7 = new File("D:/Training/eclipse_workspaces/test_artefact_builder/test_run_dir/ObjFileDir/dir7/obj7.txt");
-		//File objFile8 = new File("D:/Training/eclipse_workspaces/test_artefact_builder/test_run_dir/ObjFileDir/dir8/obj8.txt");
+		Environment currentEnvironment = new Environment();
+		InputData currentInputData = new InputData();
+		ArrayList<RegressionTest> allRegressionTests = new ArrayList<>();
+		GenerateTestArtefacts generateTestArtefacts = new GenerateTestArtefacts();
 		
-		ArrayList<File> listOfObjects = new ArrayList<>();
+		//Create RegressionTest objects and add them to allRegressionTests array list
+		for (int i = 0; i < currentInputData.getListOfObjects().size(); i++) {
+			RegressionTest tempRegressionTest = new RegressionTest();
+			allRegressionTests.add(tempRegressionTest);
+		}
 		
-		listOfObjects.add(objFile1);
-		listOfObjects.add(objFile2);
-		listOfObjects.add(objFile3);
-		listOfObjects.add(objFile4);
-		listOfObjects.add(objFile5);
-		listOfObjects.add(objFile6);
+		//Create Run Directories and assign them to each RegressionTest object
+		generateTestArtefacts.createAssignRunDir(currentEnvironment, allRegressionTests, currentInputData);
 		
-		CreateDirStructure thisDirStructure = new CreateDirStructure(listOfObjects);
+		//Copy Dataset object files to each runDir
+		
+		//Generate Trail File and Copy to each run dir
+		
+		//provide output object array
+		
+		
+		CreateDirStructure thisDirStructure = new CreateDirStructure(currentInputData.getListOfObjects());
 		ArrayList<File> createdDirList = thisDirStructure.getListOfRunDirs();
 		
 		for (int i = 0; i < createdDirList.size(); i++) {
