@@ -40,5 +40,10 @@ public class GenerateTestArtefacts {
 			}
 		}
 	}
+	
+	public void buildAndCopyTrail(ArrayList<File> trailBlocks, ArrayList<RegressionTest> allRegressionTests) {
+		 File trailFile = new File(pathname)
+		
+	}
 
 }
