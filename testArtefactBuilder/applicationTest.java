@@ -7,7 +7,7 @@ public class applicationTest {
 	public static void main(String[] args) {
 		
 		Environment currentEnvironment = new Environment();
-		InputData currentInputData = new InputData();
+		InputData currentInputData = new InputData(currentEnvironment);
 		ArrayList<RegressionTest> allRegressionTests = new ArrayList<>();
 		GenerateTestArtefacts generateTestArtefacts = new GenerateTestArtefacts();
 		
