@@ -2,12 +2,14 @@ package testArtefactBuilder;
 
 import java.util.ArrayList;
 
-public class applicationTest {
+public class RegressionTestSet {
+	
+	ArrayList<RegressionTest> regressionTestSet;
 
-	public static void main(String[] args) {
+	public RegressionTestSet() {
 		
 		Environment currentEnvironment = new Environment();
-		InputData currentInputData = new InputData();
+		InputData currentInputData = new InputData(currentEnvironment);
 		ArrayList<RegressionTest> allRegressionTests = new ArrayList<>();
 		GenerateTestArtefacts generateTestArtefacts = new GenerateTestArtefacts();
 		
@@ -30,15 +32,22 @@ public class applicationTest {
 		generateTestArtefacts.copyObjectFiles(allRegressionTests);
 		
 		//Generate Trail File and Copy to each run dir
+				
+		regressionTestSet = allRegressionTests;
 		
-		//provide output object array
-		
-		// Generate toString for all RegressionTest Object for testing
-		for (RegressionTest regTest : allRegressionTests) {
-			System.out.println(regTest.toString());
-			System.out.println("");
-		}
 		
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder output = new StringBuilder();
+		for (RegressionTest regTest : regressionTestSet) {
+			output.append(regTest.toString());
+			output.append(System.getProperty("line.separator"));
+		}
+		return output.toString();
+	}
+	
+	
 
 }
