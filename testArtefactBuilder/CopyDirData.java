@@ -29,9 +29,9 @@ public class CopyDirData
 		{
 		    if (file.isFile()) 
 		    {
-		    	String fileLoc = source.toString()+"\\"+file.getName();
-		    	File srcFile = new File(fileLoc);
-		    	System.out.println(srcFile.getName());
+		    	
+		    	File srcFile = new File(file.getAbsolutePath());
+		    	//System.out.println(srcFile.getName());
 		    	FileUtils.copyFileToDirectory(srcFile,dest);	
 		    }
 		}

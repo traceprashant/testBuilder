@@ -4,3 +4,6 @@
 /applicationTest.class
 /CopyDirData.class
 /CreateMasterTrail.class
+/GenerateTestArtefacts.class
+/InputData.class
+/RegressionTest.class
