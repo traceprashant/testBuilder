@@ -3,11 +3,11 @@ package testArtefactBuilder;
 import java.io.*;
 import java.util.*;
 
-public class Environment {
+class Environment {
 	
-	public File workDir, runDataRepoLocation, trailRepoLocation, objectRepoLocation;
+	File workDir, runDataRepoLocation, trailRepoLocation, objectRepoLocation;
 
-	public Environment() {
+	Environment() {
 		workDir = new File(System.getProperty("user.dir"));
 		try {
 			FileReader reader = new FileReader(new File(workDir,"environment.properties"));
@@ -28,19 +28,19 @@ public class Environment {
 		
 	}
 
-	public File getWorkDir() {
+	File getWorkDir() {
 		return workDir;
 	}
 
-	public File getRunDataRepoLocation() {
+	File getRunDataRepoLocation() {
 		return runDataRepoLocation;
 	}
 
-	public File getTrailRepoLocation() {
+	File getTrailRepoLocation() {
 		return trailRepoLocation;
 	}
 
-	public File getObjectRepoLocation() {
+	File getObjectRepoLocation() {
 		return objectRepoLocation;
 	}	
 

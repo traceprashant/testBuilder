@@ -11,30 +11,12 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class InputData {
+class InputData {
 	
 	ArrayList<File> listOfObjects = new ArrayList<>();
 	ArrayList<File> listOfTrailBlocks = new ArrayList<>();
 	
-/*	public InputData() {
-		File objFile1 = new File("D:/Training/eclipse_workspaces/test_artefact_builder/test_run_dir/ObjFileDir/dir1/obj1.prt");
-		File objFile2 = new File("D:/Training/eclipse_workspaces/test_artefact_builder/test_run_dir/ObjFileDir/dir2/obj2.prt");
-		File objFile3 = new File("D:/Training/eclipse_workspaces/test_artefact_builder/test_run_dir/ObjFileDir/dir3/obj3.prt");
-		File objFile4 = new File("D:/Training/eclipse_workspaces/test_artefact_builder/test_run_dir/ObjFileDir/dir4/obj4.prt");
-		File objFile5 = new File("D:/Training/eclipse_workspaces/test_artefact_builder/test_run_dir/ObjFileDir/dir5/obj5.prt");
-		File objFile6 = new File("D:/Training/eclipse_workspaces/test_artefact_builder/test_run_dir/ObjFileDir/dir6/obj6.prt");
-		
-		listOfObjects.add(objFile1);
-		listOfObjects.add(objFile2);
-		listOfObjects.add(objFile3);
-		listOfObjects.add(objFile4);
-		listOfObjects.add(objFile5);
-		listOfObjects.add(objFile6);
-		
-		
-	}*/
-	
-	public InputData(Environment myEnv) {
+	InputData(Environment myEnv) {
 		
 		File jsonFile = new File(myEnv.getWorkDir(), "input.json");
 		
@@ -69,11 +51,11 @@ public class InputData {
 		
 	}
 
-	public ArrayList<File> getListOfObjects() {
+	ArrayList<File> getListOfObjects() {
 		return listOfObjects;
 	}
 
-	public ArrayList<File> getListOfTrailBlocks() {
+	ArrayList<File> getListOfTrailBlocks() {
 		return listOfTrailBlocks;
 	}
 	

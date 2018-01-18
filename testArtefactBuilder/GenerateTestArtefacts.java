@@ -14,9 +14,9 @@ import java.io.FileWriter;
 import java.io.InputStreamReader;
 
 
-public class GenerateTestArtefacts {
+class GenerateTestArtefacts {
 	
-	public void createAssignRunDir (Environment myEnv, ArrayList<RegressionTest> allRegressionTests, InputData currentInputData) {
+	void createAssignRunDir (Environment myEnv, ArrayList<RegressionTest> allRegressionTests, InputData currentInputData) {
 		StringBuilder dirName = new StringBuilder(new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()));
 		
 		for (int i = 0; i < allRegressionTests.size(); i++) {
@@ -27,7 +27,7 @@ public class GenerateTestArtefacts {
 		}
 	}
 	
-	public void copyObjectFiles (ArrayList<RegressionTest> allRegressionTests) {
+	void copyObjectFiles (ArrayList<RegressionTest> allRegressionTests) {
 		
 		for (int i = 0; i < allRegressionTests.size(); i++) {
 			File source = allRegressionTests.get(i).getDatasetFile().getParentFile();
@@ -48,7 +48,7 @@ public class GenerateTestArtefacts {
 		}
 	}
 	
-	public boolean buildTrail(ArrayList<File> trailBlocks, ArrayList<RegressionTest> allRegressionTests) {
+	boolean buildTrail(ArrayList<File> trailBlocks, ArrayList<RegressionTest> allRegressionTests) {
 		 File assembledTrail = new File(allRegressionTests.get(0).getRundir(), "generated_trail.txt");
 		 try {
 			assembledTrail.createNewFile();
@@ -82,7 +82,7 @@ public class GenerateTestArtefacts {
 		}
 	}
 	
-	public void copyTrailToAllRundirs (ArrayList<RegressionTest> allRegressionTests) {
+	void copyTrailToAllRundirs (ArrayList<RegressionTest> allRegressionTests) {
 		File generatedTrail = new File(allRegressionTests.get(0).getRundir(),"generated_trail.txt");
 		for (int i = 0; i < allRegressionTests.size(); i++) {
 			try {
