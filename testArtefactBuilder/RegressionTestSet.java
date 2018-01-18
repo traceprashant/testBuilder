@@ -50,6 +50,10 @@ public class RegressionTestSet {
 		}
 		return output.toString();
 	}
+
+	public ArrayList<RegressionTest> getRegressionTestSet() {
+		return regressionTestSet;
+	}
 	
 	
 
