@@ -7,6 +7,13 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 import org.apache.commons.io.FileUtils;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.InputStreamReader;
+
+
 public class GenerateTestArtefacts {
 	
 	public void createAssignRunDir (Environment myEnv, ArrayList<RegressionTest> allRegressionTests, InputData currentInputData) {
@@ -41,9 +48,55 @@ public class GenerateTestArtefacts {
 		}
 	}
 	
-	public void buildAndCopyTrail(ArrayList<File> trailBlocks, ArrayList<RegressionTest> allRegressionTests) {
-		 File trailFile = new File(pathname)
-		
+	public boolean buildTrail(ArrayList<File> trailBlocks, ArrayList<RegressionTest> allRegressionTests) {
+		 File assembledTrail = new File(allRegressionTests.get(0).getRundir(), "generated_trail.txt");
+		 try {
+			assembledTrail.createNewFile();
+			
+			for (int i = 0; i < trailBlocks.size(); i++) {
+				FileInputStream fileInputObj = new FileInputStream(trailBlocks.get(i));
+				BufferedReader buffReaderObj = new BufferedReader(new InputStreamReader(fileInputObj));
+				
+				FileWriter fileWriterObj = new FileWriter(assembledTrail, true);
+				BufferedWriter buffWriterObj = new BufferedWriter(fileWriterObj);
+				
+				String line = null;
+				
+				while ((line = buffReaderObj.readLine()) != null) {
+					buffWriterObj.write(line);
+					buffWriterObj.newLine();
+				}
+				
+				buffReaderObj.close();
+				buffWriterObj.close();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 
+		if (assembledTrail.exists()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public void copyTrailToAllRundirs (ArrayList<RegressionTest> allRegressionTests) {
+		File generatedTrail = new File(allRegressionTests.get(0).getRundir(),"generated_trail.txt");
+		for (int i = 0; i < allRegressionTests.size(); i++) {
+			try {
+				if (i != 0) {
+					FileUtils.copyFileToDirectory(generatedTrail, allRegressionTests.get(i).getRundir());
+				}
+				allRegressionTests.get(i).setTrailCopied(true);
+				allRegressionTests.get(i).setTrailFile(new File(allRegressionTests.get(i).getRundir(),"generated_trail.txt"));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
 	}
 
 }

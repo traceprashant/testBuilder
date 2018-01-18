@@ -16,7 +16,7 @@ public class InputData {
 	ArrayList<File> listOfObjects = new ArrayList<>();
 	ArrayList<File> listOfTrailBlocks = new ArrayList<>();
 	
-	public InputData() {
+/*	public InputData() {
 		File objFile1 = new File("D:/Training/eclipse_workspaces/test_artefact_builder/test_run_dir/ObjFileDir/dir1/obj1.prt");
 		File objFile2 = new File("D:/Training/eclipse_workspaces/test_artefact_builder/test_run_dir/ObjFileDir/dir2/obj2.prt");
 		File objFile3 = new File("D:/Training/eclipse_workspaces/test_artefact_builder/test_run_dir/ObjFileDir/dir3/obj3.prt");
@@ -32,7 +32,7 @@ public class InputData {
 		listOfObjects.add(objFile6);
 		
 		
-	}
+	}*/
 	
 	public InputData(Environment myEnv) {
 		
@@ -53,7 +53,7 @@ public class InputData {
 				listOfObjects.add(tempObject);
 			}
 			
-			for (int i = 0; i < objects.size(); i++) {
+			for (int i = 0; i < trailBlocks.size(); i++) {
 				File tempTrailBlock = new File(myEnv.getTrailRepoLocation(), trailBlocks.get(i).toString());
 				listOfTrailBlocks.add(tempTrailBlock);
 			}

@@ -31,7 +31,10 @@ public class RegressionTestSet {
 		//Copy Dataset object files to each runDir
 		generateTestArtefacts.copyObjectFiles(allRegressionTests);
 		
-		//Generate Trail File and Copy to each run dir
+		//Generate Trail File in first rundir and copy it to others if generated
+		if (generateTestArtefacts.buildTrail(currentInputData.getListOfTrailBlocks(), allRegressionTests) == true) {
+			generateTestArtefacts.copyTrailToAllRundirs(allRegressionTests);
+		};
 				
 		regressionTestSet = allRegressionTests;
 		
