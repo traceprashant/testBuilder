@@ -5,9 +5,9 @@ import java.io.File;
 public class RegressionTest {
 	
 	File rundir, datasetFile, trailFile;
-	boolean isTrailCopied, isConfigUpdated, isDataCopied;
+	boolean isTrailCopied, isConfigUpdated, isDataCopied,result;
 	String dataSetFileName;
-	
+		
 	public String getDataSetFileName() {
 		return dataSetFileName;
 	}
@@ -50,6 +50,10 @@ public class RegressionTest {
 	public void setDataCopied(boolean isDataCopied) {
 		this.isDataCopied = isDataCopied;
 	}
+	public void setResult(Boolean result) {
+		this.result = result;
+			
+	}
 	public RegressionTest() {
 		this.rundir = null;
 		this.datasetFile = null;
@@ -58,11 +62,12 @@ public class RegressionTest {
 		this.isConfigUpdated = false;
 		this.isDataCopied = false;
 		this.dataSetFileName = null;
+		this.result=true;
 	}
 	
 	@Override
 	public String toString() {
-		return "RegressionTest [rundir=" + rundir + ", datasetFile=" + datasetFile + ", trailFile=" + trailFile
+		return "RegressionTest [result=" + result + ",rundir=" + rundir + ", datasetFile=" + datasetFile + ", trailFile=" + trailFile
 				+ ", isTrailCopied=" + isTrailCopied + ", isConfigUpdated=" + isConfigUpdated + ", isDataCopied="
 				+ isDataCopied + ", dataSetFileName=" + dataSetFileName + "]";
 	}
