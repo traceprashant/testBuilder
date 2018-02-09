@@ -33,7 +33,7 @@ public class ArtefactBuilderTest {
 		//Check Dataset File name
 		System.out.println("Seed Object File Name: " + currentTestDeck.getRegressionTestSet().get(i).getDataSetFileName());		
 				
-		String WORKING_DIR="";
+		/*String WORKING_DIR="";
 		WORKING_DIR=currentTestDeck.getRegressionTestSet().get(i).getRundir().toString();
 		WORKING_DIR=WORKING_DIR.replace("\\","/");
 		System.out.println("WORKING_DIR: " + WORKING_DIR);
@@ -74,14 +74,14 @@ public class ArtefactBuilderTest {
         	System.out.println("TEST FAILED..!!!");
         }
         
-        System.out.println("############################################################################");
+        System.out.println("############################################################################");*/
                 	
-	}	
- 		System.out.println("Total Number of Tests: " + currentTestDeck.getRegressionTestSet().size());
+		}	
+ 		/*System.out.println("Total Number of Tests: " + currentTestDeck.getRegressionTestSet().size());
  		System.out.println();
  		
  		// Print Information about entire Regression Set
- 		System.out.println(currentTestDeck);	
+ 		System.out.println(currentTestDeck);*/	
  
   }
 }

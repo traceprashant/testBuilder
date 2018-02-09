@@ -2,6 +2,9 @@ package testArtefactBuilder;
 
 import java.util.ArrayList;
 import java.util.Properties;
+
+import javax.naming.CommunicationException;
+
 import java.io.File;
 
 import java.io.FileNotFoundException;
@@ -16,6 +19,8 @@ class InputData {
 	
 	ArrayList<File> listOfObjects = new ArrayList<>();
 	ArrayList<File> listOfTrailBlocks = new ArrayList<>();
+	ArrayList<String> datasetIdList = new ArrayList<>();
+	String creoVersion;
 	
 	InputData(Environment myEnv) {
 		
@@ -27,14 +32,14 @@ class InputData {
 			
 			JSONObject jsonObject = (JSONObject) obj;
 			
-			String creoVersion = jsonObject.get("creoversion").toString();
+			creoVersion = jsonObject.get("creoversion").toString();
 			JSONArray datasets = (JSONArray) jsonObject.get("datasets");
 			JSONArray trailBlocks = (JSONArray) jsonObject.get("trailblocks");
 			
-			System.out.println("Creo Version: "+ creoVersion);
+			//System.out.println("Creo Version: "+ creoVersion);
 			
 			// reading dataset.properties file 
-			File workDir = new File(System.getProperty("user.dir") + "\\src\\workingDir");
+			File workDir = new File(System.getProperty("user.dir"));
 			FileReader readDataset = new FileReader(new File(workDir,"dataset.properties"));
 			Properties propDataset = new Properties();
 			propDataset.load(readDataset);
@@ -46,11 +51,12 @@ class InputData {
 				String datapropValue = propDataset.getProperty(datasets.get(i).toString());
 				File tempObject = new File(myEnv.getObjectRepoLocation(), datapropValue);
 				listOfObjects.add(tempObject);
+				datasetIdList.add(datasets.get(i).toString());
 			}
 			
 			//populating trail blocks
 			for (int i = 0; i < trailBlocks.size(); i++) {
-				File tempTrailBlock = new File(myEnv.getTrailRepoLocation(), trailBlocks.get(i).toString());
+				File tempTrailBlock = new File(myEnv.getTrailRepoLocation(),   trailBlocks.get(i).toString().concat(".txt"));
 				listOfTrailBlocks.add(tempTrailBlock);
 			}
 			
@@ -73,6 +79,14 @@ class InputData {
 
 	ArrayList<File> getListOfTrailBlocks() {
 		return listOfTrailBlocks;
+	}
+
+	public String getCreoVersion() {
+		return creoVersion;
+	}
+
+	public ArrayList<String> getDatasetIdList() {
+		return datasetIdList;
 	}
 	
 	

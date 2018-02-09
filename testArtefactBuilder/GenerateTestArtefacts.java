@@ -17,11 +17,13 @@ import java.io.InputStreamReader;
 class GenerateTestArtefacts {
 	
 	void createAssignRunDir (Environment myEnv, ArrayList<RegressionTest> allRegressionTests, InputData currentInputData) {
+		
 		StringBuilder dirName = new StringBuilder(new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()));
 		
 		for (int i = 0; i < allRegressionTests.size(); i++) {
+			String datasetId = currentInputData.getDatasetIdList().get(i).concat("_");
 			StringBuilder tempDirName = new StringBuilder(dirName.toString());
-			File runDir = new File(myEnv.getRunDataRepoLocation(), tempDirName.append("_").append(i).toString());
+			File runDir = new File(myEnv.getRunDataRepoLocation(), datasetId.concat(tempDirName.append("_").append(i).toString()));
 			runDir.mkdir();
 			allRegressionTests.get(i).setRundir(runDir);
 		}

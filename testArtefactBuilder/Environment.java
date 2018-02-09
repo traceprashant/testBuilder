@@ -11,7 +11,7 @@ class Environment {
 	Environment() {
 		
 		try {
-			workDir = new File(System.getProperty("user.dir") + "\\src\\workingDir");
+			workDir = new File(System.getProperty("user.dir"));
 			
 			FileReader reader = new FileReader(new File(workDir,"environment.properties"));
 			Properties propEnv = new Properties();
