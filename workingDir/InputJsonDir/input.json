@@ -1,5 +1,5 @@
 {
   "creoversion":"P-20-77",
   "datasets": [ "ClutchAssembly", "Bulldozer", "ClutchBearing", "AscPreamp", "VGAConnector", "TransisterAssembly", "MotorHousing", "CellPhone", "GyroScope"],
-  "trailblocks": [ "000_Trail_Start_Block", "003_Retrieve_Seed_Data", "006_Activate_Automatic_Rep", "012_Change_Shading_Quality", "006_Activate_Automatic_Rep" ]
+  "trailblocks": [ "Creo_Start", "Retrieve_Seed_Data", "Change_Shading_Quality", "Explode_The_View", "UnExplode_The_View", "GraphicalRefViewer", "Creo_Exit"]
 }

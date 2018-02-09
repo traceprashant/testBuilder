@@ -6,7 +6,7 @@ public class RegressionTest {
 	
 	File rundir, datasetFile, trailFile;
 	boolean isTrailCopied, isConfigUpdated, isDataCopied,result;
-	String dataSetFileName;
+	String dataSetFileName, datasetId;
 		
 	public String getDataSetFileName() {
 		return dataSetFileName;
@@ -54,6 +54,20 @@ public class RegressionTest {
 		this.result = result;
 			
 	}
+	
+	public boolean isResult() {
+		return result;
+	}
+	public void setResult(boolean result) {
+		this.result = result;
+	}
+	public String getDatasetId() {
+		return datasetId;
+	}
+	public void setDatasetId(String datasetId) {
+		this.datasetId = datasetId;
+	}
+	
 	public RegressionTest() {
 		this.rundir = null;
 		this.datasetFile = null;

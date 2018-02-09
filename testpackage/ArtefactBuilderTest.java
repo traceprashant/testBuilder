@@ -31,7 +31,9 @@ public class ArtefactBuilderTest {
 		//Check if Dataset is copied to run directory
 		System.out.println("Is Dataset Copied: " + currentTestDeck.getRegressionTestSet().get(i).isDataCopied());
 		//Check Dataset File name
-		System.out.println("Seed Object File Name: " + currentTestDeck.getRegressionTestSet().get(i).getDataSetFileName());		
+		System.out.println("Seed Object File Name: " + currentTestDeck.getRegressionTestSet().get(i).getDataSetFileName());	
+		//Check Dataset Id
+		System.out.println("Dataset Id: " + currentTestDeck.getRegressionTestSet().get(i).getDatasetId());
 				
 		/*String WORKING_DIR="";
 		WORKING_DIR=currentTestDeck.getRegressionTestSet().get(i).getRundir().toString();

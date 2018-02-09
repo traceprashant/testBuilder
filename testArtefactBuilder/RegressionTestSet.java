@@ -26,6 +26,7 @@ public class RegressionTestSet {
 		for (int i = 0; i < allRegressionTests.size(); i++) {
 			allRegressionTests.get(i).setDatasetFile(currentInputData.getListOfObjects().get(i));
 			allRegressionTests.get(i).setDataSetFileName(currentInputData.getListOfObjects().get(i).getName());
+			allRegressionTests.get(i).setDatasetId(currentInputData.getDatasetIdList().get(i));
 		}
 		
 		//Copy Dataset object files to each runDir
