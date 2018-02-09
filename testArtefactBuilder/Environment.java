@@ -5,18 +5,23 @@ import java.util.*;
 
 class Environment {
 	
-	File workDir, runDataRepoLocation, trailRepoLocation, objectRepoLocation;
+	File workDir, runDataRepoLocation, trailRepoLocation, objectRepoLocation, inputJsonDirLocation;
 
+	
 	Environment() {
-		workDir = new File(System.getProperty("user.dir"));
+		
 		try {
-			FileReader reader = new FileReader(new File(workDir,"environment.properties"));
-			Properties prop = new Properties();
-			prop.load(reader);
+			workDir = new File(System.getProperty("user.dir") + "\\src\\workingDir");
 			
-			runDataRepoLocation = new File(prop.getProperty("runDataRepoLocation"));
-			trailRepoLocation = new File(prop.getProperty("trailRepoLocation"));
-			objectRepoLocation = new File(prop.getProperty("objectRepoLocation"));
+			FileReader reader = new FileReader(new File(workDir,"environment.properties"));
+			Properties propEnv = new Properties();
+			propEnv.load(reader);
+			
+			runDataRepoLocation = new File(propEnv.getProperty("runDataRepoLocation"));
+			trailRepoLocation = new File(propEnv.getProperty("trailRepoLocation"));
+			objectRepoLocation = new File(propEnv.getProperty("objectRepoLocation"));
+			inputJsonDirLocation = new File(propEnv.getProperty("inputJsonDirLocation"));
+			
 			
 		} catch (FileNotFoundException e) {
 			System.out.println("Failed to load file environment.properties");
@@ -27,6 +32,8 @@ class Environment {
 		}
 		
 	}
+	
+	
 
 	File getWorkDir() {
 		return workDir;
@@ -43,5 +50,10 @@ class Environment {
 	File getObjectRepoLocation() {
 		return objectRepoLocation;
 	}	
+	
+	File getInputJsonDirLocation()
+	{
+		return inputJsonDirLocation;
+	}
 
 }

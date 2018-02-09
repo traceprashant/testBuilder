@@ -1,0 +1,5 @@
+{
+  "creoversion":"P-20-77",
+  "datasets": [ "clutch_assembly"],
+  "trailblocks": [ "trail_file_01.txt", "trail_file_03.txt", "trail_file_04.txt", "trail_file_03.txt", "trail_file_03.txt" ]
+}

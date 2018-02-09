@@ -1,6 +1,7 @@
 package testArtefactBuilder;
 
 import java.util.ArrayList;
+import java.util.Properties;
 import java.io.File;
 
 import java.io.FileNotFoundException;
@@ -18,27 +19,42 @@ class InputData {
 	
 	InputData(Environment myEnv) {
 		
-		File jsonFile = new File(myEnv.getWorkDir(), "input.json");
+		File jsonFile = new File(myEnv.getInputJsonDirLocation(), "input.json");
 		
 		JSONParser parser = new JSONParser();
 		try {
 			Object obj = parser.parse(new FileReader(jsonFile));
 			
 			JSONObject jsonObject = (JSONObject) obj;
-			//System.out.println(jsonObject);
 			
-			JSONArray objects = (JSONArray) jsonObject.get("objects");
+			String creoVersion = jsonObject.get("creoversion").toString();
+			JSONArray datasets = (JSONArray) jsonObject.get("datasets");
 			JSONArray trailBlocks = (JSONArray) jsonObject.get("trailblocks");
 			
-			for (int i = 0; i < objects.size(); i++) {
-				File tempObject = new File(myEnv.getObjectRepoLocation(), objects.get(i).toString());
+			System.out.println("Creo Version: "+ creoVersion);
+			
+			// reading dataset.properties file 
+			File workDir = new File(System.getProperty("user.dir") + "\\src\\workingDir");
+			FileReader readDataset = new FileReader(new File(workDir,"dataset.properties"));
+			Properties propDataset = new Properties();
+			propDataset.load(readDataset);
+			
+			
+			// populating dataset
+			for (int i = 0; i < datasets.size(); i++) {
+			
+				String datapropValue = propDataset.getProperty(datasets.get(i).toString());
+				File tempObject = new File(myEnv.getObjectRepoLocation(), datapropValue);
 				listOfObjects.add(tempObject);
 			}
 			
+			//populating trail blocks
 			for (int i = 0; i < trailBlocks.size(); i++) {
 				File tempTrailBlock = new File(myEnv.getTrailRepoLocation(), trailBlocks.get(i).toString());
 				listOfTrailBlocks.add(tempTrailBlock);
 			}
+			
+			
 			
 			
 		} catch (FileNotFoundException e) {
